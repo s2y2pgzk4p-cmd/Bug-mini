@@ -15,35 +15,24 @@
   --btn-text:var(--tg-theme-button-text-color,#ffffff);
   --soft:var(--tg-theme-secondary-bg-color,#eff2f5);
   --line:color-mix(in srgb,var(--text) 12%,transparent);
-  --me:var(--btn);
   --radius:18px;
 }
 @media (prefers-color-scheme:dark){
-  :root{
-    --bg:var(--tg-theme-bg-color,#151c24);
-    --text:var(--tg-theme-text-color,#eef1f4);
-    --hint:var(--tg-theme-hint-color,#8795a3);
-    --soft:var(--tg-theme-secondary-bg-color,#1f2a35);
-  }
+  :root{--bg:var(--tg-theme-bg-color,#151c24);--text:var(--tg-theme-text-color,#eef1f4);--hint:var(--tg-theme-hint-color,#8795a3);--soft:var(--tg-theme-secondary-bg-color,#1f2a35)}
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
-  font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-button,input,textarea,select{font:inherit;color:inherit}
-#app{display:flex;flex-direction:column;height:var(--tg-viewport-height,100dvh);
-  padding-top:env(safe-area-inset-top,0px)}
-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,textarea{font:inherit;color:inherit}
+#app{display:flex;flex-direction:column;height:var(--tg-viewport-height,100dvh);padding-top:env(safe-area-inset-top,0px)}
+header{padding:10px 16px 6px}
 header h1{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em}
 header p{margin:0;font-size:13px;color:var(--hint)}
-.icon-btn{border:0;background:var(--soft);width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer}
 main{flex:1;min-height:0;position:relative}
 .panel{position:absolute;inset:0;display:none;flex-direction:column;min-height:0}
 .panel.on{display:flex}
 .scroll{flex:1;min-height:0;overflow-y:auto;padding:8px 16px 16px;-webkit-overflow-scrolling:touch}
-nav{display:flex;border-top:1px solid var(--line);background:var(--bg);
-  padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;border:0;background:none;padding:9px 0 8px;color:var(--hint);cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px}
+nav{display:flex;border-top:1px solid var(--line);background:var(--bg);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;padding:9px 0 8px;color:var(--hint);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px}
 nav button span{font-size:21px;line-height:1.2}
 nav button.on{color:var(--btn);font-weight:600}
 .btn{border:0;background:var(--btn);color:var(--btn-text);padding:12px 18px;border-radius:14px;font-weight:600;cursor:pointer}
@@ -51,109 +40,56 @@ nav button.on{color:var(--btn);font-weight:600}
 .btn:disabled{opacity:.5}
 .field{width:100%;border:1px solid var(--line);background:var(--soft);border-radius:14px;padding:12px 14px;outline:none;resize:none}
 .field:focus{border-color:var(--btn)}
-.row{display:flex;gap:8px;align-items:flex-end}
+.row{display:flex;gap:8px;align-items:flex-end;margin-top:12px}
 .hint{color:var(--hint);font-size:13px}
-
-/* chat */
-.msg{max-width:86%;padding:10px 14px;border-radius:var(--radius);margin:6px 0;white-space:pre-wrap;word-wrap:break-word}
-.msg.user{margin-left:auto;background:var(--me);color:var(--btn-text);border-bottom-right-radius:6px}
-.msg.model{background:var(--soft);border-bottom-left-radius:6px}
-.msg .say{display:block;margin-top:6px;border:0;background:none;color:var(--link);padding:0;font-size:13px;cursor:pointer}
-.dots{display:inline-flex;gap:4px}
-.dots i{width:7px;height:7px;border-radius:50%;background:var(--hint);animation:b 1s infinite}
-.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
-@keyframes b{0%,80%,100%{opacity:.3}40%{opacity:1}}
-.empty{text-align:center;padding:36px 12px 8px}
-.empty h2{margin:0 0 6px;font-size:22px;letter-spacing:-.01em}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.warn{display:none;margin:0 0 12px;padding:12px 14px;border-radius:14px;background:var(--soft);font-size:14px}
+.warn.on{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chip{border:1px solid var(--line);background:none;border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer}
 .chip.on{background:var(--btn);color:var(--btn-text);border-color:var(--btn)}
-.composer{display:flex;gap:8px;align-items:flex-end;padding:8px 12px 10px;border-top:1px solid var(--line)}
-.composer textarea{max-height:120px}
-
-/* draw */
-.frame{margin-top:14px;aspect-ratio:1/1;border-radius:var(--radius);background:var(--soft);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;color:var(--hint);text-align:center;padding:16px}
+.frame{margin-top:14px;aspect-ratio:1/1;border-radius:var(--radius);background:var(--soft);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;color:var(--hint);text-align:center;padding:16px}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
 .frame img.ok{opacity:1}
-
-/* search */
 .hit{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .hit img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none;background:var(--soft)}
 .hit h3{margin:0 0 3px;font-size:16px}
 .hit p{margin:0;font-size:14px;color:var(--hint)}
-
-/* settings sheet */
-#sheet{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;z-index:5}
-#sheet.on{display:flex}
-#sheet .box{background:var(--bg);width:100%;border-radius:22px 22px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px))}
-#sheet h2{margin:0 0 4px;font-size:19px}
-.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--text);color:var(--bg);
-  padding:9px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9}
 .toast.on{opacity:.92}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div id="app">
-  <header>
-    <div><h1>Bug AI</h1><p id="sub">Chat, draw, search and listen</p></div>
-    <button class="icon-btn" id="gear" aria-label="Settings">⚙️</button>
-  </header>
-
+  <header><h1>Bug AI</h1><p>Same brain, memory and settings as your bot</p></header>
   <main>
-    <!-- CHAT -->
-    <section class="panel on" id="p-chat">
-      <div class="scroll" id="log"></div>
-      <div class="composer">
-        <textarea class="field" id="msg" rows="1" placeholder="Ask anything"></textarea>
-        <button class="icon-btn" id="mic" aria-label="Dictate" hidden>🎤</button>
-        <button class="btn" id="send">Send</button>
-      </div>
-    </section>
+    <section class="panel on" id="p-chat"><div class="scroll">
+      <p class="warn" id="warn">Open this app from the keyboard button so it can reach your bot. Send /app to the bot to get that button.</p>
+      <textarea class="field" id="msg" rows="5" placeholder="Write a message to the bot"></textarea>
+      <div class="row"><button class="btn" id="send" style="flex:1">Send to bot</button></div>
+      <p class="hint" style="margin-top:12px">The app closes and the answer appears in your bot chat.</p>
+      <div class="chips" id="quick"></div>
+    </div></section>
 
-    <!-- DRAW -->
-    <section class="panel" id="p-draw">
-      <div class="scroll">
-        <textarea class="field" id="prompt" rows="3" placeholder="Describe the image you want"></textarea>
-        <div class="chips" id="styles" style="justify-content:flex-start"></div>
-        <div class="row" style="margin-top:12px">
-          <button class="btn" id="go" style="flex:1">Create image</button>
-          <button class="btn ghost" id="again" disabled>New version</button>
-        </div>
-        <div class="frame" id="frame"><span>Your image will appear here</span><img id="out" alt="Generated image"></div>
-        <div class="row" style="margin-top:12px"><button class="btn ghost" id="open" style="flex:1" disabled>Open full size</button></div>
-      </div>
-    </section>
+    <section class="panel" id="p-draw"><div class="scroll">
+      <textarea class="field" id="prompt" rows="3" placeholder="Describe the image you want"></textarea>
+      <div class="chips" id="styles"></div>
+      <div class="row"><button class="btn" id="go" style="flex:1">Create image</button><button class="btn ghost" id="again" disabled>New version</button></div>
+      <div class="frame" id="frame"><span>Your image will appear here</span><img id="out" alt="Generated image"></div>
+      <div class="row"><button class="btn ghost" id="open" style="flex:1" disabled>Open full size</button><button class="btn ghost" id="tochat" style="flex:1">Send to chat</button></div>
+    </div></section>
 
-    <!-- SEARCH -->
-    <section class="panel" id="p-search">
-      <div class="scroll">
-        <div class="row">
-          <input class="field" id="q" placeholder="Search Wikipedia" enterkeyhint="search">
-          <button class="btn" id="find">Search</button>
-        </div>
-        <div id="hits"><p class="hint" style="margin-top:14px">Type a topic to see short summaries with links.</p></div>
-      </div>
-    </section>
+    <section class="panel" id="p-search"><div class="scroll">
+      <div class="row" style="margin-top:0"><input class="field" id="q" placeholder="Search Wikipedia" enterkeyhint="search"><button class="btn" id="find">Search</button></div>
+      <div id="hits"><p class="hint" style="margin-top:14px">Type a topic to see short summaries with links.</p></div>
+    </div></section>
 
-    <!-- VOICE -->
-    <section class="panel" id="p-voice">
-      <div class="scroll">
-        <textarea class="field" id="say" rows="6" placeholder="Paste or type text to hear it read aloud"></textarea>
-        <p class="hint" style="margin:12px 0 4px">Voice</p>
-        <select class="field" id="voice"></select>
-        <p class="hint" style="margin:12px 0 4px">Speed: <b id="rv">1.0</b>x</p>
-        <input type="range" id="rate" min="0.6" max="1.5" step="0.1" value="1" style="width:100%">
-        <div class="row" style="margin-top:14px">
-          <button class="btn" id="speak" style="flex:1">Read aloud</button>
-          <button class="btn ghost" id="stop">Stop</button>
-        </div>
-        <p class="hint" id="vnote"></p>
-      </div>
-    </section>
+    <section class="panel" id="p-voice"><div class="scroll">
+      <p class="warn" id="warn2">Open this app from the keyboard button so it can reach your bot. Send /app to the bot to get that button.</p>
+      <textarea class="field" id="say" rows="6" placeholder="Type text and the bot will send it back as a voice message"></textarea>
+      <div class="row"><button class="btn" id="speak" style="flex:1">Send voice message</button></div>
+      <p class="hint" style="margin-top:12px">Reads about 500 characters. Russian, English, Persian and Arabic are detected automatically.</p>
+    </div></section>
   </main>
-
   <nav>
     <button data-t="chat" class="on"><span>💬</span>Chat</button>
     <button data-t="draw"><span>🎨</span>Draw</button>
@@ -161,40 +97,29 @@ nav button.on{color:var(--btn);font-weight:600}
     <button data-t="voice"><span>🔊</span>Voice</button>
   </nav>
 </div>
-
-<div id="sheet">
-  <div class="box">
-    <h2>Gemini API key</h2>
-    <p class="hint" style="margin:0 0 12px">Chat needs your own key. It is saved only on this device and never sent anywhere except Google.</p>
-    <input class="field" id="key" type="password" placeholder="Paste your key" autocomplete="off">
-    <div class="row" style="margin-top:12px">
-      <button class="btn" id="saveKey" style="flex:1">Save key</button>
-      <button class="btn ghost" id="wipe">Clear chat</button>
-    </div>
-    <div class="row" style="margin-top:8px"><button class="btn ghost" id="close" style="flex:1">Close</button></div>
-  </div>
-</div>
 <div class="toast" id="toast"></div>
-
 <script>
 (function(){
 "use strict";
 var tg = window.Telegram && window.Telegram.WebApp;
 if (tg) { try { tg.ready(); tg.expand(); } catch(e){} }
-
-var MODEL = "gemini-3.5-flash-lite";
-var SYSTEM = "You are Bug AI, a friendly assistant inside a Telegram mini app. Be clear and concise. Reply in the user's language.";
 var $ = function(s){ return document.querySelector(s); };
+var canSend = !!(tg && tg.sendData && !(tg.initDataUnsafe && tg.initDataUnsafe.query_id));
+if (!canSend) { $("#warn").classList.add("on"); $("#warn2").classList.add("on"); }
 
-var store = {
-  get: function(k, d){ try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
-  set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
-};
 function tap(){ try { tg.HapticFeedback.impactOccurred("light"); } catch(e){} }
-function toast(t){ var el = $("#toast"); el.textContent = t; el.classList.add("on"); setTimeout(function(){ el.classList.remove("on"); }, 2200); }
+function toast(t){ var el = $("#toast"); el.textContent = t; el.classList.add("on"); setTimeout(function(){ el.classList.remove("on"); }, 2400); }
 function openUrl(u){ try { tg.openLink(u); } catch(e){ window.open(u, "_blank"); } }
 
-/* ---------- tabs ---------- */
+/* Everything that needs the AI goes through the bot, so it shares the bot's memory and settings */
+function toBot(cmd, text){
+  text = String(text || "").trim().substring(0, 1500);
+  if (!text) { toast("Write something first"); return; }
+  if (!canSend) { toast("Open the app from the keyboard button"); return; }
+  tap();
+  try { tg.sendData(JSON.stringify({ cmd: cmd, text: text })); } catch(e){ toast("Could not send. Try again."); }
+}
+
 var tabs = document.querySelectorAll("nav button");
 tabs.forEach(function(b){
   b.addEventListener("click", function(){
@@ -204,152 +129,19 @@ tabs.forEach(function(b){
   });
 });
 
-/* ---------- settings ---------- */
-function sheet(on){ $("#sheet").classList.toggle("on", on); if (on) $("#key").value = store.get("key", ""); }
-$("#gear").onclick = function(){ sheet(true); };
-$("#close").onclick = function(){ sheet(false); };
-$("#sheet").addEventListener("click", function(e){ if (e.target.id === "sheet") sheet(false); });
-$("#saveKey").onclick = function(){ store.set("key", $("#key").value.trim()); sheet(false); toast("Key saved"); };
-$("#wipe").onclick = function(){ hist = []; store.set("hist", hist); renderLog(); sheet(false); toast("Chat cleared"); };
-
-/* ---------- speech ---------- */
-function detectLang(t){
-  if (/[پچژگ]/.test(t)) return "fa-IR";
-  if (/[\u0600-\u06FF]/.test(t)) return "ar-SA";
-  if (/[\u0400-\u04FF]/.test(t)) return "ru-RU";
-  return "en-US";
-}
-var synth = window.speechSynthesis;
-function speak(text, voiceName, rate){
-  if (!synth) { toast("Voice is not supported here"); return; }
-  synth.cancel();
-  var clean = String(text).replace(/https?:\/\/\S+/g, " ").replace(/[*_`#~>|\[\]]/g, " ").replace(/\s+/g, " ").trim();
-  if (!clean) return;
-  var u = new SpeechSynthesisUtterance(clean);
-  var v = null;
-  if (voiceName) { v = synth.getVoices().filter(function(x){ return x.name === voiceName; })[0]; }
-  if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = detectLang(clean); }
-  u.rate = rate || 1;
-  synth.speak(u);
-}
-function fillVoices(){
-  if (!synth) { $("#vnote").textContent = "Your device does not support reading aloud."; return; }
-  var list = synth.getVoices(), sel = $("#voice");
-  sel.innerHTML = "";
-  var auto = document.createElement("option"); auto.value = ""; auto.textContent = "Automatic (matches the text language)"; sel.appendChild(auto);
-  list.forEach(function(v){ var o = document.createElement("option"); o.value = v.name; o.textContent = v.name + " (" + v.lang + ")"; sel.appendChild(o); });
-}
-if (synth) { fillVoices(); synth.onvoiceschanged = fillVoices; } else { fillVoices(); }
-$("#rate").oninput = function(){ $("#rv").textContent = Number(this.value).toFixed(1); };
-$("#speak").onclick = function(){ tap(); speak($("#say").value, $("#voice").value, parseFloat($("#rate").value)); };
-$("#stop").onclick = function(){ if (synth) synth.cancel(); };
-
-/* ---------- chat ---------- */
-var hist = store.get("hist", []);
-var busy = false;
-var log = $("#log");
-
-function bubble(role, text){
-  var d = document.createElement("div");
-  d.className = "msg " + role;
-  d.textContent = text;
-  if (role === "model") {
-    var s = document.createElement("button");
-    s.className = "say"; s.textContent = "Listen";
-    s.onclick = function(){ speak(text, "", 1); };
-    d.appendChild(s);
-  }
-  return d;
-}
-function renderLog(){
-  log.innerHTML = "";
-  if (!hist.length) {
-    var name = "";
-    try { name = tg.initDataUnsafe.user.first_name; } catch(e){}
-    var e = document.createElement("div");
-    e.className = "empty";
-    e.innerHTML = "<h2></h2><p class='hint'>Ask a question, or start with an idea.</p><div class='chips'></div>";
-    e.querySelector("h2").textContent = name ? "Hi " + name : "Hi there";
-    ["Explain a topic simply", "Help me plan my day", "Give me a quick quiz"].forEach(function(t){
-      var c = document.createElement("button"); c.className = "chip"; c.textContent = t;
-      c.onclick = function(){ $("#msg").value = t; sendMsg(); };
-      e.querySelector(".chips").appendChild(c);
-    });
-    log.appendChild(e);
-    return;
-  }
-  hist.forEach(function(m){ log.appendChild(bubble(m.role, m.text)); });
-  log.scrollTop = log.scrollHeight;
-}
-function sendMsg(){
-  var input = $("#msg"), text = input.value.trim();
-  if (!text || busy) return;
-  var key = store.get("key", "");
-  if (!key) { toast("Add your Gemini key first"); sheet(true); return; }
-  tap();
-  input.value = ""; input.style.height = "auto";
-  hist.push({ role: "user", text: text });
-  renderLog();
-  var wait = document.createElement("div");
-  wait.className = "msg model"; wait.innerHTML = "<span class='dots'><i></i><i></i><i></i></span>";
-  log.appendChild(wait); log.scrollTop = log.scrollHeight;
-  busy = true; $("#send").disabled = true;
-
-  fetch("https://generativelanguage.googleapis.com/v1beta/models/" + MODEL + ":generateContent", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": key },
-    body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM }] },
-      contents: hist.slice(-14).map(function(m){ return { role: m.role, parts: [{ text: m.text }] }; })
-    })
-  }).then(function(r){
-    return r.json().then(function(j){ return { ok: r.ok, status: r.status, j: j }; });
-  }).then(function(res){
-    var out;
-    if (res.ok) {
-      var c = res.j.candidates && res.j.candidates[0];
-      out = c && c.content && c.content.parts ? c.content.parts.map(function(p){ return p.text || ""; }).join("").trim() : "";
-      if (!out) out = "I could not write an answer. Try rephrasing.";
-    } else if (res.status === 429) {
-      out = "Your free Gemini quota is used up for now. Try again in a few minutes.";
-    } else if (res.status === 400 || res.status === 403) {
-      out = "Google rejected the key. Open Settings and paste a valid Gemini API key.";
-    } else {
-      out = "Request failed (" + res.status + "). Try again.";
-    }
-    hist.push({ role: "model", text: out });
-  }).catch(function(){
-    hist.push({ role: "model", text: "No connection. Check your internet and try again." });
-  }).then(function(){
-    hist = hist.slice(-40); store.set("hist", hist);
-    busy = false; $("#send").disabled = false; renderLog();
-  });
-}
-$("#send").onclick = sendMsg;
-$("#msg").addEventListener("keydown", function(e){
-  if (e.key === "Enter" && !e.shiftKey && window.matchMedia("(hover:hover)").matches) { e.preventDefault(); sendMsg(); }
+/* chat */
+$("#send").onclick = function(){ toBot("chat", $("#msg").value); };
+[["Reminders", "/reminders"], ["Help", "/help"], ["Voice replies on", "/voice on"], ["Voice replies off", "/voice off"]].forEach(function(q){
+  var c = document.createElement("button"); c.className = "chip"; c.textContent = q[0];
+  c.onclick = function(){ toBot("raw", q[1]); };
+  $("#quick").appendChild(c);
 });
-$("#msg").addEventListener("input", function(){ this.style.height = "auto"; this.style.height = Math.min(this.scrollHeight, 120) + "px"; });
 
-var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-if (SR) {
-  var mic = $("#mic"); mic.hidden = false;
-  mic.onclick = function(){
-    var r = new SR(); r.lang = detectLang($("#msg").value || navigator.language || "en"); r.interimResults = false;
-    r.onresult = function(e){ $("#msg").value = e.results[0][0].transcript; };
-    r.onerror = function(){ toast("Could not hear you"); };
-    try { r.start(); toast("Listening..."); } catch(e){}
-  };
-}
-renderLog();
+/* voice */
+$("#speak").onclick = function(){ toBot("say", $("#say").value); };
 
-/* ---------- draw ---------- */
-var STYLES = [
-  ["Any style", ""], ["Realistic", ", photorealistic, natural light, high detail"],
-  ["Cartoon", ", cartoon illustration, bold outlines, bright colors"],
-  ["Watercolor", ", soft watercolor painting"], ["3D render", ", 3D render, soft studio lighting"],
-  ["Diagram", ", clean educational diagram, labeled, white background"]
-];
+/* draw (runs in the app, no key needed) */
+var STYLES = [["Any style",""],["Realistic",", photorealistic, natural light, high detail"],["Cartoon",", cartoon illustration, bold outlines, bright colors"],["Watercolor",", soft watercolor painting"],["3D render",", 3D render, soft studio lighting"],["Diagram",", clean educational diagram, labeled, white background"]];
 var styleIdx = 0, lastUrl = "";
 STYLES.forEach(function(s, i){
   var c = document.createElement("button");
@@ -361,9 +153,7 @@ function draw(){
   var p = $("#prompt").value.trim();
   if (!p) { toast("Describe the image first"); return; }
   tap();
-  var full = p + STYLES[styleIdx][1];
-  lastUrl = "https://image.pollinations.ai/prompt/" + encodeURIComponent(full) +
-    "?width=1024&height=1024&nologo=true&seed=" + Math.floor(Math.random() * 1e6);
+  lastUrl = "https://image.pollinations.ai/prompt/" + encodeURIComponent(p + STYLES[styleIdx][1]) + "?width=1024&height=1024&nologo=true&seed=" + Math.floor(Math.random() * 1e6);
   var img = $("#out"), hint = $("#frame span");
   img.classList.remove("ok"); hint.style.display = ""; hint.textContent = "Creating your image, this can take up to 30 seconds";
   $("#go").disabled = true; $("#again").disabled = true; $("#open").disabled = true;
@@ -374,17 +164,16 @@ function draw(){
 $("#go").onclick = draw;
 $("#again").onclick = draw;
 $("#open").onclick = function(){ if (lastUrl) openUrl(lastUrl); };
+$("#tochat").onclick = function(){ toBot("draw", $("#prompt").value + STYLES[styleIdx][1]); };
 
-/* ---------- search (Wikipedia, free, no key) ---------- */
+/* search (Wikipedia, free) */
 function find(){
   var q = $("#q").value.trim(), box = $("#hits");
   if (!q) return;
   tap();
   box.innerHTML = "<p class='hint' style='margin-top:14px'>Searching...</p>";
-  var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrlimit=8" +
-    "&gsrsearch=" + encodeURIComponent(q) +
-    "&prop=extracts%7Cpageimages%7Cinfo&exintro=1&explaintext=1&exsentences=3&exlimit=max" +
-    "&piprop=thumbnail&pithumbsize=160&inprop=url";
+  var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrlimit=8&gsrsearch=" + encodeURIComponent(q) +
+    "&prop=extracts%7Cpageimages%7Cinfo&exintro=1&explaintext=1&exsentences=3&exlimit=max&piprop=thumbnail&pithumbsize=160&inprop=url";
   fetch(url).then(function(r){ return r.json(); }).then(function(j){
     var pages = j.query && j.query.pages ? Object.keys(j.query.pages).map(function(k){ return j.query.pages[k]; }) : [];
     pages.sort(function(a, b){ return a.index - b.index; });
@@ -393,16 +182,13 @@ function find(){
     pages.forEach(function(p){
       var d = document.createElement("div"); d.className = "hit";
       if (p.thumbnail) { var im = document.createElement("img"); im.src = p.thumbnail.source; im.alt = ""; d.appendChild(im); }
-      var t = document.createElement("div");
-      var h = document.createElement("h3"); h.textContent = p.title;
-      var s = document.createElement("p"); s.textContent = (p.extract || "").substring(0, 240);
+      var t = document.createElement("div"), h = document.createElement("h3"), s = document.createElement("p");
+      h.textContent = p.title; s.textContent = (p.extract || "").substring(0, 240);
       t.appendChild(h); t.appendChild(s); d.appendChild(t);
       d.onclick = function(){ openUrl(p.fullurl); };
       box.appendChild(d);
     });
-  }).catch(function(){
-    box.innerHTML = "<p class='hint' style='margin-top:14px'>Search failed. Check your connection and try again.</p>";
-  });
+  }).catch(function(){ box.innerHTML = "<p class='hint' style='margin-top:14px'>Search failed. Check your connection and try again.</p>"; });
 }
 $("#find").onclick = find;
 $("#q").addEventListener("keydown", function(e){ if (e.key === "Enter") find(); });
