@@ -105,7 +105,7 @@ function openUrl(u){ try { tg.openLink(u); } catch(e){ window.open(u, "_blank");
 function call(cmd, text){
   var d = tg && tg.initData ? tg.initData : "";
   if (!d) return Promise.reject(new Error("telegram"));
-  var url = API + "?c=" + encodeURIComponent(cmd) + "&t=" + encodeURIComponent(String(text || "").substring(0, 1200)) + "&d=" + encodeURIComponent(d);
+  var url = API + "?kcmd=" + encodeURIComponent(cmd) + "&ktext=" + encodeURIComponent(String(text || "").substring(0, 1200)) + "&d=" + encodeURIComponent(d);
   var ctl = window.AbortController ? new AbortController() : null;
   var to = setTimeout(function(){ if (ctl) ctl.abort(); }, 60000);
   return fetch(url, ctl ? { signal: ctl.signal } : {}).then(function(r){ clearTimeout(to); return r.json(); });
